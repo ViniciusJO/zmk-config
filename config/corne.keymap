@@ -1,4 +1,154 @@
-tap-ms = <200>;
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/keys.h>
+
+#define DEFAULT_L 0
+
+&lt {
+    quick-tap-ms = <200>;
+    tapping-term-ms = <200>;
+};
+
+/ {
+    chosen { zmk,matrix_transform = &five_column_transform; };
+
+    behaviors {
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+
+            quick-tap-ms = <200>;
+        };
+
+        vim_i: vim_i {
+            compatible = "zmk,behavior-mod-morph";
+            label = "VIM_I";
+            bindings = <&to 0>, <&vim_I>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        vim_o: vim_o {
+            compatible = "zmk,behavior-mod-morph";
+            label = "VIM_O";
+            bindings = <&next_line_enter>, <&previous_line_enter>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        vim_c_r: vim_c_r {
+            compatible = "zmk,behavior-mod-morph";
+            label = "VIM_C_R";
+            #binding-cells = <0>;
+            bindings = <&none>, <&kp LG(LS(Z))>;
+
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        vim_backspace: vim_backspace {
+            compatible = "zmk,behavior-mod-morph";
+            label = "VIM_BACKSPACE";
+            bindings = <&kp LA(BACKSPACE)>, <&kp LA(DELETE)>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+        };
+
+        slashandbackslash: slashandbackslash {
+            compatible = "zmk,behavior-mod-morph";
+            label = "SLASHANDBACKSLASH";
+            bindings = <&kp SLASH>, <&kp BACKSLASH>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+        };
+
+        quote: quote {
+            compatible = "zmk,behavior-mod-morph";
+            label = "QUOTE";
+            bindings = <&kp SINGLE_QUOTE>, <&kp GRAVE>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+        };
+
+        coma_semi: coma_semi {
+            compatible = "zmk,behavior-mod-morph";
+            label = "COMA_SEMI";
+            bindings = <&kp COMMA>, <&kp SEMI>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        dot_colon: dot_colon {
+            compatible = "zmk,behavior-mod-morph";
+            label = "DOT_COLON";
+            bindings = <&kp PERIOD>, <&kp COLON>, <&kp LA(COLON)>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        q_grave: q_grave {
+            compatible = "zmk,behavior-mod-morph";
+            label = "Q_GRAVE";
+            bindings = <&kp Q>, <&kp GRAVE>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+        };
+
+        home: home {
+            compatible = "zmk,behavior-mod-morph";
+            label = "HOME";
+            bindings = <&kp LG(LEFT)>, <&kp HOME>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        end: end {
+            compatible = "zmk,behavior-mod-morph";
+            label = "END";
+            bindings = <&kp LG(RIGHT)>, <&kp END>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RALT)>;
+        };
+
+        quote_grave: quote_grave {
+            compatible = "zmk,behavior-mod-morph";
+            label = "QUOTE_GRAVE";
+            bindings = <&kp SINGLE_QUOTE>, <&kp GRAVE>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+        };
+
+        hm_quotes: hm_quotes {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HM_QUOTES";
+            bindings = <&kp>, <&quote_grave>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
             flavor = "tap-preferred";
         };
 
@@ -652,154 +802,3 @@ tap-ms = <200>;
         };
     };
 };
-/*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
-
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/keys.h>
-
-#define DEFAULT_L 0
-
-&lt {
-    quick-tap-ms = <200>;
-    tapping-term-ms = <200>;
-};
-
-/ {
-    chosen { zmk,matrix_transform = &five_column_transform; };
-
-    behaviors {
-        hm: homerow_mods {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
-
-            quick-tap-ms = <200>;
-        };
-
-        vim_i: vim_i {
-            compatible = "zmk,behavior-mod-morph";
-            label = "VIM_I";
-            bindings = <&to 0>, <&vim_I>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        vim_o: vim_o {
-            compatible = "zmk,behavior-mod-morph";
-            label = "VIM_O";
-            bindings = <&next_line_enter>, <&previous_line_enter>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        vim_c_r: vim_c_r {
-            compatible = "zmk,behavior-mod-morph";
-            label = "VIM_C_R";
-            #binding-cells = <0>;
-            bindings = <&none>, <&kp LG(LS(Z))>;
-
-            mods = <(MOD_LCTL|MOD_RCTL)>;
-        };
-
-        vim_backspace: vim_backspace {
-            compatible = "zmk,behavior-mod-morph";
-            label = "VIM_BACKSPACE";
-            bindings = <&kp LA(BACKSPACE)>, <&kp LA(DELETE)>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-
-        slashandbackslash: slashandbackslash {
-            compatible = "zmk,behavior-mod-morph";
-            label = "SLASHANDBACKSLASH";
-            bindings = <&kp SLASH>, <&kp BACKSLASH>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-
-        quote: quote {
-            compatible = "zmk,behavior-mod-morph";
-            label = "QUOTE";
-            bindings = <&kp SINGLE_QUOTE>, <&kp GRAVE>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-
-        coma_semi: coma_semi {
-            compatible = "zmk,behavior-mod-morph";
-            label = "COMA_SEMI";
-            bindings = <&kp COMMA>, <&kp SEMI>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LALT|MOD_RALT)>;
-            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        dot_colon: dot_colon {
-            compatible = "zmk,behavior-mod-morph";
-            label = "DOT_COLON";
-            bindings = <&kp PERIOD>, <&kp COLON>, <&kp LA(COLON)>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LALT|MOD_RALT)>;
-            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        q_grave: q_grave {
-            compatible = "zmk,behavior-mod-morph";
-            label = "Q_GRAVE";
-            bindings = <&kp Q>, <&kp GRAVE>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-
-        home: home {
-            compatible = "zmk,behavior-mod-morph";
-            label = "HOME";
-            bindings = <&kp LG(LEFT)>, <&kp HOME>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        end: end {
-            compatible = "zmk,behavior-mod-morph";
-            label = "END";
-            bindings = <&kp LG(RIGHT)>, <&kp END>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT|MOD_RALT)>;
-        };
-
-        quote_grave: quote_grave {
-            compatible = "zmk,behavior-mod-morph";
-            label = "QUOTE_GRAVE";
-            bindings = <&kp SINGLE_QUOTE>, <&kp GRAVE>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-
-        hm_quotes: hm_quotes {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HM_QUOTES";
-            bindings = <&kp>, <&quote_grave>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-
