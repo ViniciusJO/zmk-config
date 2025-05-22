@@ -678,10 +678,10 @@
 
         third {
             bindings = <
-  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-                  &trans  &trans  &trans    &trans  &trans  &trans
+  &kp F9  &kp F10  &kp F11  &kp F12  &kp C_BRIGHTNESS_INC     &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &kp K_VOL_UP
+  &kp F5  &kp F6   &kp F7   &kp F8   &kp C_BRIGHTNESS_AUTO    &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &kp K_MUTE
+  &kp F1  &kp F2   &kp F3   &kp F4   &kp C_BRIGHTNESS_DEC     &kp F1    &kp F2     &kp F3     &kp F4     &kp K_VOL_DN
+                   &trans   &trans   &kp K_PLAY_PAUSE         &kp K_PP  &trans     &trans
             >;
         };
     };
